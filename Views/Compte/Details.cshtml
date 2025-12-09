@@ -1,0 +1,120 @@
+@{
+    ViewData["Title"] = "Details Compte";
+}
+@model Tuple<Models.Compte, List<Models.Transaction>>
+
+<div class="container mt-4">
+
+    <h2>Détails du compte</h2>
+
+    <div class="row mt-4">
+
+        <div class="col-md-4">
+            <div class="card p-3 shadow-sm">
+                <h5>Informations du compte</h5>
+
+                <p><strong>N° Compte:</strong> @Model.Item1.Numero</p>
+                <p><strong>Titulaire:</strong> @Model.Item1.Titulaire</p>
+                <p><strong>Type:</strong> <span class="badge bg-info">@Model.Item1.Type</span></p>
+                <p><strong>Solde actuel:</strong>
+                    <span class="text-success">@Model.Item1.Solde.ToString("N0") FCFA</span>
+                </p>
+                <p><strong>Date création:</strong> @Model.Item1.DateCreation.ToShortDateString()</p>
+                <p><strong>Statut:</strong> <span class="badge bg-warning">@Model.Item1.Statut</span></p>
+
+                @if (Model.Item1.DateDeblocage != null)
+                {
+                    <p><strong>Date déblocage:</strong> @Model.Item1.DateDeblocage?.ToShortDateString()</p>
+                }
+            </div>
+
+            <div class="card p-3 shadow-sm mt-3">
+                <h5>Statistiques</h5>
+
+                @{
+                    var depots = Model.Item1.Transactions.Where(t => t.Montant > 0).Sum(t => t.Montant);
+                    var retraits = Model.Item1.Transactions.Where(t => t.Montant < 0).Sum(t => t.Montant);
+                }
+
+                <p>Total dépôts: @depots.ToString("N0") FCFA</p>
+                <p>Total retraits: @Math.Abs(retraits).ToString("N0") FCFA</p>
+                <p>Nombre transactions: @Model.Item1.Transactions.Count</p>
+                <p>Dernière transaction:
+                    @Model.Item1.Transactions.OrderByDescending(t => t.Date).First().Date.ToShortDateString()
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card p-3 shadow-sm">
+
+                <h5>Historique des transactions</h5>
+
+                <form method="get" class="mb-3">
+                    <input type="hidden" name="id" value="@Model.Item1.Id" />
+
+                    <select name="type" class="form-select" onchange="this.form.submit()">
+                        <option value="tous" selected="@(ViewBag.Type == "tous")">Tous</option>
+                        <option value="depot" selected="@(ViewBag.Type == "depot")">Dépôts</option>
+                        <option value="retrait" selected="@(ViewBag.Type == "retrait")">Retraits</option>
+                    </select>
+                </form>
+
+
+
+                <table class="table table-hover mt-3">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Montant</th>
+                            <th>Solde après</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var t in Model.Item2)
+                        {
+                            <tr>
+                                <td>@t.Code</td>
+                                <td>@t.Date.ToShortDateString()</td>
+                                <td>
+                                    @if (t.Montant > 0)
+                                    {
+                                        <span class="badge bg-success">Dépôt</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Retrait</span>
+                                    }
+                                </td>
+                                <td class="@(t.Montant > 0 ? "text-success" : "text-danger")">
+                                    @t.Montant.ToString("N0") FCFA
+                                </td>
+                                <td>@t.SoldeApres.ToString("N0") FCFA</td>
+                                <td>@t.Description</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <nav>
+                    <ul class="pagination">
+                        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                                <a class="page-link"
+                                    href="@Url.Action("Details", "Compte", 
+                                                                                                                                                                                                                                                                                                                     new { id = Model.Item1.Id, page = i, type = ViewBag.Type })">
+                                @i
+                            </a>
+                        </li>
+                                                }
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+</div>

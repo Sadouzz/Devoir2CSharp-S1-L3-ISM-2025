@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Liste Comptes";
+}
+@model List<Models.Compte>
+
+<h2>Liste des Comptes</h2>
+
+<form method="get" class="mb-3">
+    <input type="text" name="search" class="form-control" placeholder="Rechercher un compte..."
+        value="@(ViewBag.Search ?? "")" />
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Numéro</th>
+            <th>Titulaire</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var compte in Model)
+        {
+            <tr>
+                <td>@compte.Id</td>
+                <td>@compte.Numero</td>
+                <td>@compte.Titulaire</td>
+                <td>
+                    <a asp-controller="Compte" asp-action="Details" asp-route-id="@compte.Id">Détails</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
