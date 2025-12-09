@@ -3,6 +3,7 @@ using System;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GesCompte.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251209174759_mig2")]
+    partial class mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,7 +66,7 @@ namespace GesCompte.Migrations
                         new
                         {
                             Id = 8,
-                            DateCreation = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateCreation = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Numero = "SN001",
                             Solde = 510500m,
                             Statut = "Actif",
@@ -73,7 +76,7 @@ namespace GesCompte.Migrations
                         new
                         {
                             Id = 9,
-                            DateCreation = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateCreation = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Numero = "SN002",
                             Solde = 50500m,
                             Statut = "Actif",
@@ -126,7 +129,7 @@ namespace GesCompte.Migrations
                             Id = 1,
                             Code = "TRX001",
                             CompteId = 1,
-                            Date = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Date = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Dépôt cash au guichet",
                             Montant = 150000m,
                             SoldeApres = 150000m,
@@ -137,7 +140,7 @@ namespace GesCompte.Migrations
                             Id = 2,
                             Code = "TRX002",
                             CompteId = 1,
-                            Date = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Date = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Dépôt cash",
                             Montant = 50000m,
                             SoldeApres = 200000m,
@@ -148,7 +151,7 @@ namespace GesCompte.Migrations
                             Id = 3,
                             Code = "TRX003",
                             CompteId = 1,
-                            Date = new DateTime(2025, 1, 17, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Date = new DateTime(2025, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Salaire mensuel",
                             Montant = 120000m,
                             SoldeApres = 320000m,
@@ -159,7 +162,7 @@ namespace GesCompte.Migrations
                             Id = 4,
                             Code = "TRX004",
                             CompteId = 1,
-                            Date = new DateTime(2025, 1, 20, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Date = new DateTime(2025, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Retrait ATM Dakar Plateau",
                             Montant = -20000m,
                             SoldeApres = 300000m,
@@ -170,7 +173,7 @@ namespace GesCompte.Migrations
                             Id = 5,
                             Code = "TRX005",
                             CompteId = 1,
-                            Date = new DateTime(2025, 1, 22, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Date = new DateTime(2025, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Achat Orange Money",
                             Montant = -15000m,
                             SoldeApres = 285000m,
@@ -181,7 +184,7 @@ namespace GesCompte.Migrations
                             Id = 6,
                             Code = "TRX006",
                             CompteId = 1,
-                            Date = new DateTime(2025, 1, 25, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Date = new DateTime(2025, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Dépôt wave",
                             Montant = 30000m,
                             SoldeApres = 315000m,
@@ -192,7 +195,7 @@ namespace GesCompte.Migrations
                             Id = 7,
                             Code = "TRX007",
                             CompteId = 1,
-                            Date = new DateTime(2025, 1, 28, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Date = new DateTime(2025, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Paiement Freelance",
                             Montant = 80000m,
                             SoldeApres = 395000m,
@@ -203,7 +206,7 @@ namespace GesCompte.Migrations
                             Id = 8,
                             Code = "TRX008",
                             CompteId = 1,
-                            Date = new DateTime(2025, 1, 30, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Date = new DateTime(2025, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Achat nourriture Auchan",
                             Montant = -25000m,
                             SoldeApres = 370000m,
@@ -214,7 +217,7 @@ namespace GesCompte.Migrations
                             Id = 9,
                             Code = "TRX009",
                             CompteId = 1,
-                            Date = new DateTime(2025, 2, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Date = new DateTime(2025, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Café Matin",
                             Montant = -5000m,
                             SoldeApres = 365000m,
@@ -225,7 +228,7 @@ namespace GesCompte.Migrations
                             Id = 10,
                             Code = "TRX010",
                             CompteId = 1,
-                            Date = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Date = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Transport Dem Dikk",
                             Montant = -10000m,
                             SoldeApres = 355000m,

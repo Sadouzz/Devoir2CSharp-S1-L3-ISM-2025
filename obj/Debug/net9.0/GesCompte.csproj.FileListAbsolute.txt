@@ -187,3 +187,4 @@ D:\Licence\Licence 3\Semestre 1\C-Sharp\devoir2S1\GesCompte\obj\Debug\net9.0\ref
 D:\Licence\Licence 3\Semestre 1\C-Sharp\devoir2S1\GesCompte\obj\Debug\net9.0\GesCompte.pdb
 D:\Licence\Licence 3\Semestre 1\C-Sharp\devoir2S1\GesCompte\obj\Debug\net9.0\GesCompte.genruntimeconfig.cache
 D:\Licence\Licence 3\Semestre 1\C-Sharp\devoir2S1\GesCompte\obj\Debug\net9.0\ref\GesCompte.dll
+D:\Licence\Licence 3\Semestre 1\C-Sharp\devoir2S1\GesCompte\obj\Debug\net9.0\GesCompte.sourcelink.json
